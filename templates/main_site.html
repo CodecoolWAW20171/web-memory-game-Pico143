@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Memory game </title>
+</head>
+<body>
+<form action={{ url_for('game') }} method="POST">
+<select required>
+    <option selected="true"
+            value="Please select a number"
+            id="X" name="X"
+            disabled="disabled">Please select a number
+    </option>
+    {% for i in range(1,9) %}
+    <option value={{ i }}> {{ i }}</option>
+    {% endfor %}
+</select>
+<select required>
+    <option selected="true"
+            value="Please select a number"
+            id="Y" name="Y"
+            disabled="disabled">Please select a number
+    </option>
+    {% for i in range(2,9,2) %}
+    <option value={{ i }}> {{ i }}</option>
+    {% endfor %}
+</select>
+<input type="submit" value="Play" id="Play">
+</form>
+</body>
+</html>

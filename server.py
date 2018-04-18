@@ -1,16 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
+
 
 @app.route('/')
 def home_page():
-    render_template('main_site.html')
+    return render_template('main_site.html')
 
 
-@app.route('/game',methods=['POST'])
+@app.route('/game', methods=['POST'])
 def game():
-    render_template('game.html')
+    x_length = request.form["X"]
+    y_length = request.form["Y"]
+    return render_template('game.html', x_length=x_length, y_length=y_length )
+
 
 if __name__ == '__main__':
     app.secret_key = 'some_key'
