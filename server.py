@@ -10,8 +10,8 @@ def home_page():
 
 @app.route('/game', methods=['POST'])
 def game():
-    x_length = request.form["X"]
-    y_length = request.form["Y"]
+    x_length = int(request.form["X"])
+    y_length = int(request.form["Y"])
     return render_template('game.html', x_length=x_length, y_length=y_length )
 
 
