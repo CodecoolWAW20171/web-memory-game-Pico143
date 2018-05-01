@@ -1,13 +1,3 @@
-var handleClick = function (event) {
-    alert("This is some alert")
-};
-var buttons = document.querySelectorAll('.card');
-buttonCount = 0;
-[].forEach.call(buttons, function (button) {
-    buttonCount++;
-    button.addEventListener('click', handleClick)
-})
-
 var fontAwesome = {};
 fontAwesome["fa-ambulance"] = ["f0f9"];
 fontAwesome["fa-anchor"] = ["f13d"];
@@ -43,4 +33,22 @@ fontAwesome["fa-arrows-v"] = ["f07d"];
 fontAwesome["fa-asterisk"] = ["f069"];
 fontAwesome["fa-at"] = ["f1fa"];
 
-for (let i = 0; i<(buttonCount/2); i++)
+let game = {
+    buttons: document.querySelectorAll('.card'),
+    handleClick: function (event) {
+        alert("This is some alert")
+    },
+    initialize: function () {
+        buttonCount = 0;
+        [].forEach.call(buttons, function (button) {
+            buttonCount++;
+            button.addEventListener('click', this.handleClick)
+        })
+    }
+    
+}
+
+game.initialize();
+
+
+for (let i = 0; i < (buttonCount / 2); i++)
