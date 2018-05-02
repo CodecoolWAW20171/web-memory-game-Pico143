@@ -35,20 +35,22 @@ fontAwesome["fa-at"] = ["f1fa"];
 
 let game = {
     buttons: document.querySelectorAll('.card'),
-    handleClick: function (event) {
-        alert("This is some alert")
+    evenMove : false, // if false after move, wait for second card, if true check if cards are the same
+    turnCard: function (event) {
+        game.evenMove = !game.evenMove;
+        if (game.evenMove === true) {
+            alert("This is true alert")
+        }
+        else {
+            alert("This is false alert")
+        }
     },
     initialize: function () {
-        buttonCount = 0;
-        [].forEach.call(buttons, function (button) {
-            buttonCount++;
-            button.addEventListener('click', this.handleClick)
+        [].forEach.call(game.buttons, function (button) {
+            button.addEventListener('click', game.turnCard)
         })
     }
-    
+
 }
 
 game.initialize();
-
-
-for (let i = 0; i < (buttonCount / 2); i++)

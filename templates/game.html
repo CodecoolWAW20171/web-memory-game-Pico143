@@ -17,7 +17,7 @@
         <tr>
             {% for x in range (x_length) %}
             <td>
-                <button class="card" id={{ (x+1)|string + (y+1)|string }}><i class="fab fa-avianex"></i></button>
+                <button class="card" id={{ (y+1)|string + (x+1)|string }}><i class="fab fa-avianex"></i></button>
             </td>
             {% endfor %}
         </tr>
