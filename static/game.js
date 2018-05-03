@@ -72,6 +72,9 @@ let game = {
         if (game.evenMove === true) {
             if (game.previousCardClassList.value === icon.classList.value) {
                 game.pairsCounter++;
+                if (game.pairsCounter === game.images.length/2) {
+                    alert ("Congratulations!");
+                }
             }
             else {
                 game.previousCardClassList.value = 'fa fa-times-rectangle'
