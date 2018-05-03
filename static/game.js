@@ -57,7 +57,11 @@ let game = {
     pairsCounter: 0,
     buttons: document.querySelectorAll('.card'),
     evenMove: true, // if false after move, wait for second card, if true check if cards are the same
+    validationEnded: true, // if false, no card can be pressed
     turnCard: function (ev) {
+        if (game.validationEnded === false) {
+            return;
+        }
         image = game.images[this.id-1];
         let icon = this.querySelector('i');
         if (icon.classList.contains('fa-times-rectangle')) {
@@ -67,6 +71,7 @@ let game = {
             }
         else {
                 alert("This card is already turned around.")
+                game.validationEnded = true;
                 return;
             }
         if (game.evenMove === true) {
@@ -77,9 +82,11 @@ let game = {
                 }
             }
             else {
+                game.validationEnded = false;
                 setTimeout(function() {
                     game.previousCardClassList.value = 'fa fa-times-rectangle';
                     icon.classList.value = 'fa fa-times-rectangle';
+                    game.validationEnded = true;
                 }, 1000);
             }
         }
