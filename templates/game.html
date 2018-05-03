@@ -5,9 +5,9 @@
     <title>Memory game</title>
     <script type="text/javascript" src="static/game.js" async></script>
     <link rel="stylesheet" href="static/cssfile.css">
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
-          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossorigin="anonymous">
 </head>
 <body>
@@ -17,7 +17,7 @@
         <tr>
             {% for x in range (x_length) %}
             <td>
-                <button class="card" id={{ (y+1)|string + (x+1)|string }}><i class="fab fa-avianex"></i></button>
+                <button class="card"><i class="fa fa-times-rectangle"></i></button>
             </td>
             {% endfor %}
         </tr>
