@@ -98,7 +98,7 @@ var fontAwesome = ["fa-500px", "fa-address-book", "fa-address-book-o", "fa-addre
                 }
             }
             images = images.concat(images);
-            shuffle(images)
+            images = shuffle(images)
             return images;
         }
     }
