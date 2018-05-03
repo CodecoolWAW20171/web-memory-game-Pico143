@@ -50,57 +50,64 @@ var fontAwesome = ["fa-500px", "fa-address-book", "fa-address-book-o", "fa-addre
     "fa-compass", "fa-compress", "fa-connectdevelop", "fa-contao", "fa-copy", "fa-copyright", "fa-creative-commons",
     "fa-credit-card", "fa-credit-card-alt", "fa-crop", "fa-crosshairs", "fa-css3", "fa-cube", "fa-cubes", "fa-cut",
     "fa-cutlery", "fa-dashboard", "fa-dashcube", "fa-database", "fa-deaf",
-    "fa-deafness", "fa-dedent"]
+    "fa-deafness", "fa-dedent"];
 
 
-    let game = {
-        buttons: document.querySelectorAll('.card'),
-        evenMove: true, // if false after move, wait for second card, if true check if cards are the same
-        turnCard: function (ev) {
-            game.evenMove = !game.evenMove;
-            if (game.evenMove === true) {
-                image = game.images[this.id-1];
-                let icon = this.querySelector('i');
-                if (icon.classList.contains('fa-times-rectangle')) {
-                    icon.classList.remove('fa-times-rectangle');
-                    icon.classList.add(image);
-                }
+let game = {
+    pairsCounter: 0,
+    buttons: document.querySelectorAll('.card'),
+    evenMove: true, // if false after move, wait for second card, if true check if cards are the same
+    turnCard: function (ev) {
+        image = game.images[this.id-1];
+        let icon = this.querySelector('i');
+        if (icon.classList.contains('fa-times-rectangle')) {
+                icon.classList.remove('fa-times-rectangle');
+                icon.classList.add(image);
+                game.evenMove = !game.evenMove;
+            }
+        else {
+                alert("This card is already turned around.")
+                return;
+            }
+        if (game.evenMove === true) {
+            if (game.previousCardClassList.value === icon.classList.value) {
+                game.pairsCounter++;
             }
             else {
-                image = game.images[this.id-1];
-                let icon = this.querySelector('i');
-                if (icon.classList.contains('fa-times-rectangle')) {
-                    icon.classList.remove('fa-times-rectangle');
-                    icon.classList.add(image);
-                }
+                game.previousCardClassList.value = 'fa fa-times-rectangle'
+                icon.classList.value = 'fa fa-times-rectangle'
             }
-        },
-        initialize: function () {
-            let i = 1;
-            [].forEach.call(game.buttons, function (button) {
-                button.addEventListener('click', game.turnCard)
-                button.id = i;
-                i++;
-
-            })
-            game.images = game.getImagesArray();
-        },
-        getImagesArray: function () {
-            let images = [];
-            for (let i = 0; i < (game.buttons.length / 2); i++) {
-                let randomIndex = Math.floor(Math.random() * fontAwesome.length);
-                if (images.indexOf(fontAwesome[randomIndex]) === -1) {
-                    images.push(fontAwesome[randomIndex]);
-                }
-                else {
-                    i--;
-                    continue;
-                }
-            }
-            images = images.concat(images);
-            images = shuffle(images)
-            return images;
         }
-    }
+        else {
+            game.previousCardClassList = icon.classList;
+        }
+    },
+    initialize: function () {
+        let i = 1;
+        [].forEach.call(game.buttons, function (button) {
+            button.addEventListener('click', game.turnCard)
+            button.id = i;
+            i++;
 
-    game.initialize();
+        })
+        game.images = game.getImagesArray();
+    },
+    getImagesArray: function () {
+        let images = [];
+        for (let i = 0; i < (game.buttons.length / 2); i++) {
+            let randomIndex = Math.floor(Math.random() * fontAwesome.length);
+            if (images.indexOf(fontAwesome[randomIndex]) === -1) {
+                images.push(fontAwesome[randomIndex]);
+            }
+            else {
+                i--;
+                continue;
+            }
+        }
+        images = images.concat(images);
+        images = shuffle(images)
+        return images;
+    }
+}
+
+game.initialize();
