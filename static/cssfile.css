@@ -2,11 +2,23 @@
     background-color: DodgerBlue;
     border: none;
     color: white;
-    padding: 12px 16px;
-    font-size: 32px;
+    padding: 16px 20px;
+    font-size: 2em;
     cursor: pointer;
+    display: inline-block;
+    width: 3em;
+    height: 2em;
 }
 
-.board {
-    position: center;
+.board table {
+    margin: auto;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: lightgreen;
 }
