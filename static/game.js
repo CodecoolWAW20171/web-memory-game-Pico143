@@ -77,8 +77,10 @@ let game = {
                 }
             }
             else {
-                game.previousCardClassList.value = 'fa fa-times-rectangle'
-                icon.classList.value = 'fa fa-times-rectangle'
+                setTimeout(function() {
+                    game.previousCardClassList.value = 'fa fa-times-rectangle';
+                    icon.classList.value = 'fa fa-times-rectangle';
+                }, 1000);
             }
         }
         else {
