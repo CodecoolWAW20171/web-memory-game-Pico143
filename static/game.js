@@ -117,7 +117,8 @@ let game = {
             }
         }
         images = images.concat(images);
-        images = shuffle(images)
+        images = shuffle(images);
+        images = shuffle(images);
         return images;
     }
 }

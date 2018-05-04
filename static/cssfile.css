@@ -2,10 +2,9 @@
     background-color: DodgerBlue;
     border: none;
     color: white;
-    padding: 16px 20px;
+    padding: 16px 24px;
     font-size: 2em;
     cursor: pointer;
-    display: inline-block;
     width: 3em;
     height: 2em;
 }
